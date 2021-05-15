@@ -14,16 +14,16 @@ interface Props {
 export default function MainScene({ samples = amplitudes, durationPerSample = 2 }: Props) {
 	const frame = useCurrentFrame()
 	const video = useVideoConfig()
-	const minHeight = 20
+	const minHeight = 40
 
 	// Calculations
 	const elapsed = frame / video.fps
 
 	// Styling
 	const colors = {
-		backgroundColor: '#35D399',
-		activeColor: 'white',
-		passiveColor: 'rgba(255, 255, 255, 0.6)',
+		backgroundColor: 'rgb(53, 211, 153)',
+		activeColor: 'rgb(255, 255, 255)',
+		passiveColor: 'rgb(148, 229, 194)',
 	}
 
 	const canvasStyle = {
