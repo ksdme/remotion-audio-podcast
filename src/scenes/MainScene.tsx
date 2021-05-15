@@ -1,5 +1,6 @@
 import {useCurrentFrame, useVideoConfig} from 'remotion'
 import Pill from '../components/Pill'
+import useWait from '../hooks/useWait'
 
 const amplitudes = [
 	95, 6, 89, 66, 21, 80, 57, 79, 60, 92, 17, 36, 44, 11, 3, 68, 28, 19, 99, 14,
@@ -12,6 +13,9 @@ interface Props {
 }
 
 export default function MainScene({ samples = amplitudes, durationPerSample = 2 }: Props) {
+	// Wait for all the resources to load.
+	useWait(3)
+
 	const frame = useCurrentFrame()
 	const video = useVideoConfig()
 	const minHeight = 40
