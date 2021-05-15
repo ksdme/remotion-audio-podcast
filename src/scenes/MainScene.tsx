@@ -1,13 +1,14 @@
-import {useCurrentFrame, useVideoConfig} from 'remotion'
+import {Audio, useCurrentFrame, useVideoConfig} from 'remotion'
 import Pill from '../components/Pill'
 import useWait from '../hooks/useWait'
-import audio from '../../resources/audio.wav.json'
+import audio from '../../resources/audio.wav'
+import audioConfig from '../../resources/audio.wav.json'
 
 interface Props {
 	config: any
 }
 
-export default function MainScene({ config = audio }: Props) {
+export default function MainScene({ config = audioConfig }: Props) {
 	// Wait for all the resources to load.
 	useWait(3)
 
@@ -115,6 +116,9 @@ export default function MainScene({ config = audio }: Props) {
 			<div style={pillSectionStyle}>
 				<div style={pillContainerStyle}>{pills}</div>
 			</div>
+
+			<Audio
+				src={audio} />
 		</div>
 	)
 }
