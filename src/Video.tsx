@@ -1,4 +1,5 @@
-import {Composition} from 'remotion';
+import './index.css'
+import {Composition} from 'remotion'
 import MainScene from './scenes/MainScene'
 
 export const RemotionVideo: React.FC = () => {
