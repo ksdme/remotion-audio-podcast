@@ -1,3 +1,5 @@
+import Pill from '../components/Pill'
+
 export default function MainScene() {
 	const colors = {
 		backgroundColor: '#35D399',
@@ -9,9 +11,24 @@ export default function MainScene() {
 		background: colors.backgroundColor,
 	}
 
+	const pillContainerStyle = {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: 12,
+	}
+
 	return (
 		<div style={canvasStyle}>
-			hello world
+			<div style={pillContainerStyle}>
+				<Pill height={200} />
+				<Pill height={300} />
+				<Pill height={400} />
+				<Pill height={500} />
+				<Pill height={200} />
+				<Pill height={200} />
+				<Pill height={300} />
+			</div>
 		</div>
 	)
 }
