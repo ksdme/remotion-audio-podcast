@@ -1,24 +1,23 @@
 import {useCurrentFrame, useVideoConfig} from 'remotion'
 import Pill from '../components/Pill'
 import useWait from '../hooks/useWait'
-
-const amplitudes = [
-	95, 6, 89, 66, 21, 80, 57, 79, 60, 92, 17, 36, 44, 11, 3, 68, 28, 19, 99, 14,
-	81, 20, 40, 65, 79, 62, 25, 90, 80, 59,
-]
+import audio from '../../resources/audio.wav.json'
 
 interface Props {
-	samples: number[]
-	durationPerSample: number
+	config: any
 }
 
-export default function MainScene({ samples = amplitudes, durationPerSample = 2 }: Props) {
+export default function MainScene({ config = audio }: Props) {
 	// Wait for all the resources to load.
 	useWait(3)
 
+	// Destructure configuration
+	const samples = config.amplitudes
+	const durationPerSample = config.duration
+
 	const frame = useCurrentFrame()
 	const video = useVideoConfig()
-	const minHeight = 40
+	const minHeight = 30
 
 	// Calculations
 	const elapsed = frame / video.fps
@@ -79,7 +78,7 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 		color: colors.passiveColor,
 	}
 
-	const pills = samples.map((sample, index) => {
+	const pills = samples.map((sample: any, index: number) => {
 		const pillStarts = index * durationPerSample
 		const pillEnds = pillStarts + durationPerSample
 		let localProgress = 0
