@@ -60,11 +60,22 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 		textAlign: 'center' as 'center',
 	}
 
+	const headerSectionStyle = {
+		marginLeft: 'auto',
+		marginRight: 'auto',
+	}
+
 	const headerActiveColor = {
 		color: colors.activeColor,
 	}
 
-	const headerPassiveColor = {
+	const headerLeftPassiveColor = {
+		textAlign: 'left' as 'left',
+		color: colors.passiveColor,
+	}
+
+	const headerRightPassiveColor = {
+		textAlign: 'right' as 'right',
 		color: colors.passiveColor,
 	}
 
@@ -94,10 +105,12 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 
 	return (
 		<div style={canvasStyle}>
-			<div style={headerStyle}>
-				<div style={headerPassiveColor}>the</div>
-				<div style={headerActiveColor}>unprepared</div>
-				<div style={headerPassiveColor}>podcast</div>
+			<div style={headerSectionStyle}>
+				<div style={headerStyle}>
+					<div style={headerLeftPassiveColor}>the</div>
+					<div style={headerActiveColor}>unprepared</div>
+					<div style={headerRightPassiveColor}>podcast</div>
+				</div>
 			</div>
 
 			<div style={pillSectionStyle}>
