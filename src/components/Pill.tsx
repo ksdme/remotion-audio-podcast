@@ -13,27 +13,27 @@ export default function Pill({
 	passiveColor = 'black',
 	progress = 1,
 }: Props) {
-  // Default background for 100% progress.
-	let background: string = activeColor
+	let color = progress === 0
+    ? passiveColor
+    : activeColor
 
-	if (progress > 0 && progress < 1) {
-		background = `linear-gradient(
-      90deg,
-      ${activeColor} ${progress * 100}%,
-      ${passiveColor} ${(1 - progress) * 100}%
-    )`
-	}
-
-  if (progress === 0) {
-    background = passiveColor
-  }
-
-	const pillStyle = {
+	const containerStyle = {
 		height,
 		width,
-		background,
-		borderRadius: width / 2,
+    background: passiveColor,
+    borderRadius: width / 2,
+    overflow: 'hidden',
 	}
 
-	return <div style={pillStyle}></div>
+  const pillStyle = {
+    width: progress * 100,
+    height: '100%',
+    background: color,
+  }
+
+	return (
+    <div style={containerStyle}>
+      <div style={pillStyle}></div>
+    </div>
+  )
 }
