@@ -73,7 +73,7 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 			localProgress = (elapsed - pillStarts) / durationPerSample
 		}
 
-		if (elapsed > pillEnds) {
+		if (elapsed >= pillEnds) {
 			localProgress = 1
 		}
 
