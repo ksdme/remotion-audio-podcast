@@ -17,8 +17,7 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 	const minHeight = 20
 
 	// Calculations
-	const elapsed = video.fps * frame
-	const progress = elapsed / (samples.length * durationPerSample)
+	const elapsed = frame / video.fps
 
 	// Styling
 	const colors = {
@@ -43,18 +42,14 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 	const pillss = samples.map((sample, index) => {
 		const pillStarts = index * durationPerSample
 		const pillEnds = pillStarts + durationPerSample
-		let localProgress = 1
+		let localProgress = 0
 
-		if (progress === 0) {
-			localProgress = 0
+		if (elapsed > pillStarts && elapsed < pillEnds) {
+			localProgress = (elapsed - pillStarts) / durationPerSample
 		}
 
-		if (progress < pillStarts) {
-			localProgress = 0
-		}
-
-		if (progress > pillStarts && progress < pillEnds) {
-			localProgress = progress - pillStarts
+		if (elapsed > pillEnds) {
+			localProgress = 1
 		}
 
 		return (
