@@ -83,7 +83,7 @@ export default function MainScene({ config = audio }: Props) {
 		const pillEnds = pillStarts + durationPerSample
 		let localProgress = 0
 
-		if (elapsed > pillStarts && elapsed < pillEnds) {
+		if (elapsed >= pillStarts && elapsed < pillEnds) {
 			localProgress = (elapsed - pillStarts) / durationPerSample
 		}
 
