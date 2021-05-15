@@ -32,14 +32,21 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 		background: colors.backgroundColor,
 	}
 
+	const pillSectionStyle = {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	}
+
 	const pillContainerStyle = {
+		width: '86%',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
 		gap: 12,
 	}
 
-	const pillss = samples.map((sample, index) => {
+	const pills = samples.map((sample, index) => {
 		const pillStarts = index * durationPerSample
 		const pillEnds = pillStarts + durationPerSample
 		let localProgress = 0
@@ -65,7 +72,9 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 
 	return (
 		<div style={canvasStyle}>
-			<div style={pillContainerStyle}>{pillss}</div>
+			<div style={pillSectionStyle}>
+				<div style={pillContainerStyle}>{pills}</div>
+			</div>
 		</div>
 	)
 }
