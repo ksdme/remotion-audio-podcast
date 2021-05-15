@@ -23,12 +23,15 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 	const colors = {
 		backgroundColor: 'rgb(53, 211, 153)',
 		activeColor: 'rgb(255, 255, 255)',
-		passiveColor: 'rgb(148, 229, 194)',
+		passiveColor: 'rgb(174, 237, 214)',
 	}
 
 	const canvasStyle = {
 		height: '100%',
 		width: '100%',
+		display: 'flex',
+		flexDirection: 'column' as 'column',
+		justifyContent: 'space-around',
 		background: colors.backgroundColor,
 	}
 
@@ -44,6 +47,21 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 		alignItems: 'center',
 		justifyContent: 'center',
 		gap: 12,
+	}
+
+	const headerStyle = {
+		fontWeight: 900,
+		fontSize: '9.4rem',
+		lineHeight: '9.4rem',
+		textAlign: 'center' as 'center',
+	}
+
+	const headerActiveColor = {
+		color: colors.activeColor,
+	}
+
+	const headerPassiveColor = {
+		color: colors.passiveColor,
 	}
 
 	const pills = samples.map((sample, index) => {
@@ -72,6 +90,12 @@ export default function MainScene({ samples = amplitudes, durationPerSample = 2 
 
 	return (
 		<div style={canvasStyle}>
+			<div style={headerStyle}>
+				<div style={headerPassiveColor}>the</div>
+				<div style={headerActiveColor}>unprepared</div>
+				<div style={headerPassiveColor}>podcast</div>
+			</div>
+
 			<div style={pillSectionStyle}>
 				<div style={pillContainerStyle}>{pills}</div>
 			</div>
