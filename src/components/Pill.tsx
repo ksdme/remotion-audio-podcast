@@ -26,7 +26,7 @@ export default function Pill({
 	}
 
   const pillStyle = {
-    width: progress * 100,
+    width: `${progress * 100}%`,
     height: '100%',
     background: color,
   }
