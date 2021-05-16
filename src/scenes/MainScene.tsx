@@ -34,9 +34,16 @@ export default function MainScene({ config = audioConfig }: Props) {
 		height: '100%',
 		width: '100%',
 		display: 'flex',
+		alignItems: 'center',
+		background: colors.backgroundColor,
+	}
+
+	const mainStyle = {
+		height: video.width,
+		width: video.width,
+		display: 'flex',
 		flexDirection: 'column' as 'column',
 		justifyContent: 'space-around',
-		background: colors.backgroundColor,
 	}
 
 	const pillSectionStyle = {
@@ -105,16 +112,18 @@ export default function MainScene({ config = audioConfig }: Props) {
 
 	return (
 		<div style={canvasStyle}>
-			<div style={headerSectionStyle}>
-				<div style={headerStyle}>
-					<div style={headerLeftPassiveColor}>the</div>
-					<div style={headerActiveColor}>unprepared</div>
-					<div style={headerRightPassiveColor}>podcast</div>
+			<div style={mainStyle}>
+				<div style={headerSectionStyle}>
+					<div style={headerStyle}>
+						<div style={headerLeftPassiveColor}>the</div>
+						<div style={headerActiveColor}>unprepared</div>
+						<div style={headerRightPassiveColor}>podcast</div>
+					</div>
 				</div>
-			</div>
 
-			<div style={pillSectionStyle}>
-				<div style={pillContainerStyle}>{pills}</div>
+				<div style={pillSectionStyle}>
+					<div style={pillContainerStyle}>{pills}</div>
+				</div>
 			</div>
 
 			<Audio
