@@ -6,9 +6,10 @@ import audioConfig from '../../resources/audio.wav.json'
 
 interface Props {
 	config: any
+	episode: number
 }
 
-export default function MainScene({ config = audioConfig }: Props) {
+export default function MainScene({ config = audioConfig, episode = 1 }: Props) {
 	// Wait for all the resources to load.
 	useWait(3)
 
@@ -86,6 +87,14 @@ export default function MainScene({ config = audioConfig }: Props) {
 		color: colors.passiveColor,
 	}
 
+	const episodeCountStyle = {
+		position: 'absolute' as 'absolute',
+		top: 40,
+		right: 80,
+		color: 'white',
+		fontSize: '9.4rem',
+	}
+
 	const pills = samples.map((sample: any, index: number) => {
 		const pillStarts = index * durationPerSample
 		const pillEnds = pillStarts + durationPerSample
@@ -124,6 +133,10 @@ export default function MainScene({ config = audioConfig }: Props) {
 				<div style={pillSectionStyle}>
 					<div style={pillContainerStyle}>{pills}</div>
 				</div>
+			</div>
+
+			<div style={episodeCountStyle}>
+				{episode}
 			</div>
 
 			<Audio
